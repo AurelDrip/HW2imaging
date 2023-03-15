@@ -11,8 +11,8 @@ addpath('Tools/')
 
 %% load 3D mesh
 
-name_data = 'dragon3D_true' ;
-%name_data = 'bunny3D' ;
+%name_data = 'dragon3D_true' ;
+name_data = 'bunny3D_small' ;
 
 load([name_data, '.mat'])
 
@@ -68,7 +68,7 @@ xlabel('Noisy graph')
 % TO COMPLETE
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Squared norm of operator L
-normL2 = ... ;
+normL2 = op_norm(L,Lt,size(xbar)) ;
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 

@@ -1,11 +1,11 @@
 function p = proj_box(x,xmin,xmax)
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% TO COMPLETE
+% TO COMPLETE 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-p(:,1) = ... x(:,1) ... ; % projection dim 1
-p(:,2) = ... x(:,2) ... ; % projection dim 2
-p(:,3) = ... x(:,3) ... ; % projection dim 3
+p(:,1) = max(min(x(:,1),xmax(1)),xmin(1)); % projection dim 1
+p(:,2) = max(min(x(:,2),xmax(2)),xmin(2)); % projection dim 2
+p(:,3) = max(min(x(:,3),xmax(3)),xmin(3)); % projection dim 3
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 end
