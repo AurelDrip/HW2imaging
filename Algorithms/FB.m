@@ -14,10 +14,10 @@ f =@(x) Obj_function( x,z,Neighb_mat,L, eta ) ;
 % TO COMPLETE
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Define step-size
-gamma = 1 ;
+gamma = 1.9;
 
 % Define gradient operator
-gradh =@(x) norm(x-z) ;
+gradh =@(x) x-z ;
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Define proximity operator
@@ -55,7 +55,7 @@ for it = 1:NbIt
     % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % iterates
     u = x - gamma*gradh(x);
-    x = prox(u,1/gamma);
+    x = prox(u,gamma);
     % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     
     time(it+1) = toc(start) ;

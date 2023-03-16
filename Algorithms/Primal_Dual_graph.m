@@ -26,7 +26,7 @@ f =@(x) Obj_function( x,z,Neighb_mat, L, eta ) ;
 % TO COMPLETE
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Define gradient operator
-gradh =@(x) norm(x-z) ;
+gradh =@(x) x-z ;
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Define proximity operator for TV regularisation
@@ -39,7 +39,7 @@ proxg =@(x,T) prox_tv_graph( x , Neighb_mat , Ind_current , T ) ;  % prox TV
 % Step-sizes
 gamma = 10 ;
 sigma = gamma/normL2 ; % DO NOT CHANGE - optimised for bunny example
-tau = 2/(1+2*gamma) ;
+tau = 0.99/(0.5+1*gamma) ;
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 disp('******************************************')
@@ -90,9 +90,10 @@ for it = 1:NbIt
     % --------------------------------------------------------------
     % dual update : prox TV - u = max(abs(z) - lambda,0).*sign(z)
     % --------------------------------------------------------------
-    % Lx = L(2*x - xold) ;
-    Lx = 2*L(x) - Lxold;
-    u = (u + sigma*Lx) - sigma*proxg((1/sigma)*(u + sigma*Lx),(1/sigma));
+    %Lx = L(2*x) - Lxold;
+    Lx = L(2*x - xold) ;
+    utmp = (u + sigma*Lx);
+    u = utmp - sigma*proxg((utmp/sigma),(eta/sigma));
     % --------------------------------------------------------------
     % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     
