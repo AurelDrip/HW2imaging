@@ -88,24 +88,23 @@ x0 = proj_box(z,xmin,xmax) ;
 
 disp('******************************************')
 disp('Primal-dual algorithm')
-[xres,crit,time,rmse,norm_x] = ...
-    Primal_Dual_graph(x0, z, Ind_current,Ind_neighb,eta, Ladj, Neighb_mat, xmin,xmax, normL2, NbIt,t, RMSE, Stop_norm, Stop_crit, display, display_graph) ;
+[xres,crit,rmse,time] = ...
+    Primal_Dual_graph(x0, z, Ind_current,eta, L, Lt, Neighb_mat, xmin,xmax, normL2, NbIt,t, RMSE, Stop_norm, Stop_crit, display, display_graph) ;
 
 %% FB algorithm
 
 disp('******************************************')
 disp('FB algorithm')
-[xFB, critFB, norm_xFB, rmseFB, timeFB] = ...
-    FB(x0, z, Ind_current,Ind_neighb,eta, Ladj, Neighb_mat, xmin,xmax,normL2, NbIt,t, RMSE, Stop_norm, Stop_crit, display, display_graph) ;
+[xFB, critFB, rmseFB, timeFB] = ...
+    FB(x0, z, Ind_current,eta, L, Lt, Neighb_mat, xmin,xmax,normL2, NbIt,t, RMSE, Stop_norm, Stop_crit, display, display_graph) ;
 
 
 %% FISTA
 
 disp('******************************************')
 disp('FISTA')
-[xFISTA, critFISTA, norm_xFISTA, rmseFISTA, timeFISTA] = ...
-    FISTA(x0, z, Ind_current,Ind_neighb,eta, Ladj, Neighb_mat, xmin,xmax,normL2, NbIt,t, RMSE, Stop_norm, Stop_crit, display, display_graph) ;
-
+[xFISTA, critFISTA, rmseFISTA, timeFISTA] = ...
+    FISTA(x0, z, Ind_current,eta, L, Lt, Neighb_mat, xmin,xmax,normL2, NbIt,t, RMSE, Stop_norm, Stop_crit, display, display_graph) ;
 
 % %% Primal-dual for 3D mesh denoising (constrained problem)
 % 
