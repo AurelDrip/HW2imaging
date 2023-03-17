@@ -14,7 +14,7 @@ f =@(x) Obj_function( x,z,Neighb_mat,L, eta ) ;
 % TO COMPLETE
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Define step-size
-gamma = 1.9;
+gamma = 1;
 
 % Define gradient operator
 gradh =@(x) x-z ;
